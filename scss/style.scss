@@ -1,4 +1,46 @@
-$light-color: red;
+// color variables
+$primary-color: #ffffff;
+$secondary-color: #000000;
+$light-grey: #dfdfdf;
+$main-accent: linear-gradient(
+  to right top,
+  #ffc593,
+  #fbb290,
+  #f3a08f,
+  #e78f91,
+  #d78194,
+  #d2789a,
+  #c970a2,
+  #bc6bac,
+  #b569bf,
+  #a66bd3,
+  #8c70e9,
+  #5a77ff
+);
+
+// Breakpoints
+$mobile-width: 375px;
+$tablet-width: 768px;
+$desktop-width: 1440px;
+
+// Media Queries
+@mixin mobile {
+  @media (min-width: #{$mobile-width}) and (max-width: #{$tablet-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
 
 * {
   box-sizing: border-box;
@@ -7,7 +49,96 @@ $light-color: red;
 }
 
 body {
-  background-color: $light-color;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "DM Sans", sans-serif;
   line-height: 1.6;
+  margin: 0 auto;
+  letter-spacing: 2px;
+  background-color: $primary-color;
+  @include desktop {
+    max-width: $desktop-width;
+  }
+  @include tablet {
+    max-width: $tablet-width;
+  }
+  @include mobile {
+    max-width: $mobile-width;
+  }
+}
+
+.navbar-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+
+  &-hamicon {
+    display: none;
+  }
+  @include desktop {
+    margin: 0.25em 10em 0.25em 10em;
+  }
+  @include tablet {
+    margin: 1em 2.5em 1em 2.5em;
+  }
+  //   navbar mobile
+  @include mobile {
+    margin: 2.5em 2.5em 2.5em 2.5em;
+
+    &-choices ul {
+      li {
+        a {
+          display: none;
+        }
+      }
+    }
+    &-hamicon {
+      float: right;
+      display: block;
+      position: relative;
+      width: 20px;
+    }
+  }
+
+  &-logo img {
+    text-align: center;
+  }
+
+  &-choices ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    li {
+      padding: 10px;
+      a {
+        text-decoration: none;
+        color: $secondary-color;
+
+        &:hover {
+          color: $light-grey;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  &-button {
+    color: $primary-color;
+    background-color: $secondary-color;
+    border: none;
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    &:hover {
+      background-color: $light-grey;
+      color: $secondary-color;
+      cursor: pointer;
+    }
+    @include mobile {
+      display: none;
+    }
+  }
 }
