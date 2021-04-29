@@ -1,27 +1,40 @@
-// color variables
-$primary-color: #ffffff;
-$secondary-color: #000000;
-$light-grey: #dfdfdf;
-$main-accent: linear-gradient(
-  to right top,
-  #ffc593,
-  #fbb290,
-  #f3a08f,
-  #e78f91,
-  #d78194,
-  #d2789a,
-  #c970a2,
-  #bc6bac,
-  #b569bf,
-  #a66bd3,
-  #8c70e9,
-  #5a77ff
-);
+@import 'variables';
 
-// Breakpoints
-$mobile-width: 375px;
-$tablet-width: 768px;
-$desktop-width: 1440px;
+
+
+@mixin whiteButton{
+  color:$secondary-color;
+  background-color: $primary-color;
+  border:none;
+  font-size:0.75rem;
+  font-weight:bold;
+  letter-spacing:0.125rem;
+  padding:.5rem 0 .5rem 0;
+}
+
+@mixin clearButton{
+  padding-top:1rem;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  color:$primary-color;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  width:100%;
+  letter-spacing:0.125rem;
+  font-size:0.75rem;
+  font-weight:bold;
+  span img{
+    filter: invert(1);
+    padding-left:9rem;
+  }
+  border-top:.115rem solid rgba(255, 255, 255, 0.212)
+}
+
+
+
+
 
 // Media Queries
 @mixin mobile {
@@ -46,10 +59,12 @@ $desktop-width: 1440px;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  
 }
 
 body {
-  font-family: "DM Sans", sans-serif;
+  
+  font-family: $font-sans;
   line-height: 1.6;
   margin: 0 auto;
   letter-spacing: 2px;
@@ -67,10 +82,11 @@ body {
 
 .navbar-section {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   font-size: 12px;
   font-weight: bold;
+  padding: .75rem 0 .75rem 0;
 
   &-hamicon {
     display: none;
@@ -84,6 +100,11 @@ body {
   //   navbar mobile
   @include mobile {
     margin: 2.5em 2.5em 2.5em 2.5em;
+
+    &-logo {
+      flex:1
+
+    }
 
     &-choices ul {
       li {
@@ -142,3 +163,441 @@ body {
     }
   }
 }
+//stories1 section styles
+.stories1-section{
+  display:flex;
+  
+  @include mobile{
+    flex-direction: column-reverse;
+  }
+  
+  &-row1-col1{
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color:$primary-color;
+    background-color: $secondary-color;
+    flex-shrink: 0; /* shrinks to 0 to apply 43.5% width*/
+    flex-basis: 43.5%; /* sets initial width to 43.5% */
+    
+    @include tablet{
+        flex-basis:63.5%;
+    }
+
+    &-text{
+      padding-left:0;
+      padding-right:7rem;
+      @include mobile{
+        padding:4rem 2rem 4rem 2rem;
+      }
+      @include tablet{
+        padding:6.5rem 4.70rem 6.5rem 0;
+
+      }
+      .text-wrap{
+        padding-left:7rem;
+        border-left: .35rem solid;
+        border-image-source: $main-accent;
+        border-image-slice: 1;
+        @include mobile{
+          border-left: none;
+          padding-left:0;
+        }
+        @include tablet{
+          padding-left:4.70rem;
+        }
+      }
+
+      &-header{
+        width:100%;
+        font-size: 2.5rem;
+        line-height:3rem;
+        padding-bottom:1.5rem;
+        @include mobile{
+          font-size: $mobile-h-font-size;
+          width:100%;
+        }
+        @include tablet{
+          font-size:$tablet-h-font-size;
+        }
+        #create-style{
+          @include mobile{
+            border-top: .4rem solid;
+            border-image-source: $main-accent;
+            border-image-slice: 1;
+            padding-top:3.85rem;
+          }
+        }
+      }
+
+      &-para{
+        letter-spacing:normal;
+        font-size:0.98rem;
+        color:$light-grey;
+        padding-bottom:1.75rem;
+        @include mobile{
+          font-size:$mobile-p-font-size;
+        }
+        @include tablet{
+          font-size:$tablet-p-font-size;
+        }
+      }
+
+      &-button{
+        color:$primary-color;
+        background-color: $secondary-color;
+        border:none;
+        font-size:0.75rem;
+        font-weight: bold;
+        letter-spacing:0.125rem;
+        padding:.5rem 0 .5rem 0;
+        @include mobile{
+          font-size:$mobile-p-font-size;
+        }
+        span{
+          img{
+            margin: auto;
+          }
+          @include mobile{
+            background-image: url('/assets/stories/mobile/');
+          }
+          padding-left:.5rem;
+          filter:invert(1);
+          }
+      }
+    }
+  }
+
+  &-row1-col2{
+    
+    &-img{
+        display:block;
+        min-height: 100%;
+        background-size:cover;
+        @include mobile{
+          max-width: 100%;
+          height: auto;
+          background-image: url('/assets/home/mobile/create-and-share.jpg');
+        }
+        @include tablet{
+          background-image:url('/assets/home/tablet/create-and-share.jpg');
+          max-width:100%;
+          object-fit: cover;
+        }
+    }
+  }
+}
+
+.stories2-section{
+  display:flex;
+  @include mobile{
+    flex-direction: column;
+  }
+  &-row1-col1{
+    &-img{
+        min-height: 100%;
+        background-size:cover;
+        @include mobile{
+          max-width: 100%;
+          height: auto;
+          background-image: url('/assets/home/mobile/create-and-share.jpg');
+        }
+        @include tablet{
+          background-image:url('/assets/home/tablet/create-and-share.jpg');
+          max-width:100%;
+          object-fit: cover;
+        }
+    }
+  }
+  &-row1-col2{
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; /* shrinks to 0 to apply 43.5% width*/
+    flex-basis: 43.5%; /* sets initial width to 43.5% */
+    @include tablet{
+      flex-basis:63.5%;
+    }
+    &-text{
+      padding-left:7rem;
+      padding-right:7rem;
+      @include mobile{
+        padding:4rem 2rem 4rem 2rem;
+      }
+      @include tablet{
+        padding:6.5rem 4.70rem 6.5rem 4.70rem;
+      }
+        &-header{
+          width:100%;
+          font-size: 2.5rem;
+          line-height:3rem;
+          padding-bottom:1.5rem;
+          @include mobile{
+          font-size: $mobile-h-font-size;
+          width:100%;
+          }
+          @include tablet{
+          font-size:$tablet-h-font-size;
+        }
+        }
+        
+        &-para{
+          letter-spacing:normal;
+          font-size:0.98rem;
+          color:$dark-grey;
+          padding-bottom:1.75rem;
+          @include mobile{
+          font-size:$mobile-p-font-size;
+          }
+          @include tablet{
+          font-size:$tablet-p-font-size;
+          }
+        }
+        &-button{
+          @include whiteButton();
+          @include mobile{
+            font-size:$mobile-p-font-size;
+          }
+          span{
+            img{
+              margin: auto;
+            }
+            padding-left:.5rem;
+            }
+        }
+      }
+    }
+  }
+
+
+.stories3-section{
+  display:flex;
+  @include mobile{
+    flex-direction: column-reverse;
+  }
+  &-row1-col1{
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; /* shrinks to 0 to apply 43.5% width*/
+    flex-basis: 43.5%; /* sets initial width to 43.5% */
+    @include tablet{
+      flex-basis:63.5%;
+    }
+    &-text{
+      padding-left:7rem;
+      padding-right:7rem;
+      @include mobile{
+        padding:4rem 2rem 4rem 2rem;
+      }
+      @include tablet{
+        padding:6.5rem 4.70rem 6.5rem 4.70rem;
+      }
+        &-header{
+          width:100%;
+          font-size: 2.5rem;
+          line-height:3rem;
+          padding-bottom:1.5rem;
+          @include mobile{
+          font-size: $mobile-h-font-size;
+          width:100%;
+          }
+          @include tablet{
+          font-size:$tablet-h-font-size;
+        }
+        }
+        
+        &-para{
+          letter-spacing:normal;
+          font-size:0.98rem;
+          color:$dark-grey;
+          padding-bottom:1.75rem;
+          @include mobile{
+          font-size:$mobile-p-font-size;
+          }
+          @include tablet{
+          font-size:$tablet-p-font-size;
+          }
+        }
+        &-button{
+          @include whiteButton();
+          @include mobile{
+            font-size:$mobile-p-font-size;
+          }
+          span{
+            img{
+              margin: auto;
+            }
+            padding-left:.5rem;
+            }
+        }
+      }
+    }
+  
+  &-row1-col2{
+    &-img{
+      max-width:100%;
+      min-height: 100%;
+      background-size:cover;
+      @include mobile{
+        max-width: 100%;
+        height: auto;
+        background-image: url('/assets/home/mobile/designed-for-everyone.jpg');
+      }
+      @include tablet{
+        background-image:url('/assets/home/tablet/designed-for-everyone.jpg');
+        max-width:100%;
+        object-fit: cover;
+      }
+    }
+    
+  }
+}
+
+.preview-section{
+  
+  align-items: start;
+	display: grid;
+	grid-gap: 0px;
+	grid-template-columns: repeat(auto-fit, 360px);
+	justify-content: center;
+  
+  
+  @include mobile{
+    
+  }
+  @include tablet{
+
+  }
+  
+  &-item1-wrap{
+    position: relative;
+   
+ 
+
+    &-img{
+      @include mobile{
+        max-width: 100%;
+        background-image: url('/assets/stories/mobile/mountains.jpg');
+      }
+     
+    }
+    
+    &-text{
+      position: absolute; left: 10%; bottom: 8%;
+      &-header{
+        color:$primary-color;
+        font-size:$desktop-h-preview-font-size;
+      }
+      &-para{
+        color:$primary-color;
+        font-size:$desktop-para-preview-font-size;
+        padding-bottom:1rem;
+      }
+      &-button{
+        @include clearButton();
+      }
+    }
+  }
+  
+  &-item2-wrap{
+    
+    position: relative;
+    
+    
+    &-img{
+      @include mobile{
+        max-width: 100%;
+        height: auto;
+        background-image: url('/assets/stories/mobile/cityscapes.jpg');
+        
+      }
+    }
+    
+    &-text{
+      position: absolute; left: 10%; bottom: 8%;
+      &-header{
+        color:$primary-color;
+        font-size:$desktop-h-preview-font-size;
+      }
+      &-para{
+        color:$primary-color;
+        font-size:$desktop-para-preview-font-size;
+        padding-bottom:1rem;
+      }
+      &-button{
+        @include clearButton();
+      }
+    }
+  }
+
+  &-item3-wrap{
+    
+    position: relative;
+    
+    
+    &-img{
+      @include mobile{
+        max-width: 100%;
+          height: auto;
+        background-image: url('/assets/stories/mobile/18-days-voyage.jpg');
+      }
+    }
+    
+    &-text{
+      position: absolute; left: 10%; bottom: 8%;
+      &-header{
+        color:$primary-color;
+        font-size:$desktop-h-preview-font-size;
+      }
+      &-para{
+        color:$primary-color;
+        font-size:$desktop-para-preview-font-size;
+        padding-bottom:1rem;
+      }
+      &-button{
+        @include clearButton();
+      }
+    }
+  }
+
+  &-item4-wrap{
+    
+    position: relative;
+  
+
+    
+    &-img{
+      @include mobile{
+        max-width: 100%;
+        height: auto;
+        background-image: url('/assets/stories/mobile/architecturals.jpg');
+      }
+    }
+    
+    &-text{
+      position: absolute; left: 10%; bottom: 8%;
+      &-header{
+        color:$primary-color;
+        font-size:$desktop-h-preview-font-size;
+      }
+      &-para{
+        color:$primary-color;
+        font-size:$desktop-para-preview-font-size;
+        padding-bottom:1rem;
+      }
+      &-button{
+        @include clearButton();
+      }
+    }
+  }
+}
+
+
+
+
+
+

@@ -1,0 +1,37 @@
+// color variables
+$primary-color: #ffffff;
+$secondary-color: #000000;
+$light-grey: #dfdfdfa6;
+$dark-grey: rgba(88, 88, 88, 0.651);
+$main-accent: linear-gradient(
+  to right top,
+  #ffc593,
+  #fbb290,
+  #f3a08f,
+  #e78f91,
+  #d78194,
+  #d2789a,
+  #c970a2,
+  #bc6bac,
+  #b569bf,
+  #a66bd3,
+  #8c70e9,
+  #5a77ff
+);
+
+// fonts
+$font-sans:"DM Sans", sans-serif;
+
+// Breakpoints
+$mobile-width: 375px;
+$tablet-width: 768px;
+$desktop-width: 1440px;
+
+//font-sizes
+$mobile-p-font-size:0.95rem;
+$mobile-h-font-size:2rem;
+$tablet-p-font-size:0.90rem;
+$tablet-h-font-size:2rem;
+
+$desktop-h-preview-font-size:1.125rem;
+$desktop-para-preview-font-size:0.75rem;
